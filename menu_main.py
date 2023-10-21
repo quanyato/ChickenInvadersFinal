@@ -17,7 +17,7 @@ setting_image = pygame.transform.scale(pygame.image.load('image/setting.png'), (
 contact_image = pygame.transform.scale(pygame.image.load('image/contact.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
 option_image = pygame.transform.scale(pygame.image.load('image/option.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
 
-music_image =  pygame.transform.scale(pygame.image.load('image/music_button.png'), (SCREEN_WIDTH/12, SCREEN_HEIGHT/12))
+music_image =  pygame.transform.scale(pygame.image.load('image/music_button.png'), (50, 50))
 naruto_sound = pygame.mixer.Sound('music/naruto.mp3')
 music_one_time = True   # chạy nhạc 1 lần
 
@@ -36,7 +36,7 @@ while run:
              
     game_screen.blit(background_image, [0, 0])
     game_screen.blit(logo_image, [250,50])
-    game_screen.blit(music_image, [850,550])
+    game_screen.blit(music_image, [850,530])
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

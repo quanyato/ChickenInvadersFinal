@@ -27,12 +27,21 @@ pygame.display.set_caption("Game Chicken Invaders") # koyomi
 clock = pygame.time.Clock()
 pygame.key.set_repeat(10,20)   # giu nut se tang toc do
 
-#-----------------------------------
-background_image = pygame.image.load('image/bg.jpg').convert_alpha()
-background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+#-----------------------------------load old background
+# background_image = pygame.image.load('image/bg.jpg').convert_alpha()
+# background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+bg_image = pygame.image.load("image/back_0.jpg").convert_alpha()
+bg_height = bg_image.get_height()
+back_scroll_speed=0
 
 spaceship_hit_sound = pygame.mixer.Sound('music/spaceship_hit.ogg')
 boom_sound = pygame.mixer.Sound('music/boom_sound.mp3')
+
+def draw_background():
+    global back_scroll_speed
+    for x in range (2):
+        game_screen.blit(bg_image, (0, ((-x * bg_height)-back_scroll_speed)))
 
 # lay data de setting game
 def read_setting_imformation():
@@ -40,6 +49,7 @@ def read_setting_imformation():
         return int(file.read())
 
 def main():
+    global back_scroll_speed
     #======================================================================================
     # khởi tạo biến
     chicken_list = []
@@ -68,7 +78,11 @@ def main():
     #====================================================================
     while True:
 
-        game_screen.blit(background_image, [0, 0])
+        #game_screen.blit(background_image, [0, 0]) ---old background
+        draw_background()
+        back_scroll_speed -= 0.6
+        if abs(back_scroll_speed) > bg_height:
+            back_scroll_speed=0
 
         # xe tăng + đạn + di chuyen dan 
         if base.game_over == "false":

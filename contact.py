@@ -8,7 +8,7 @@ SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 background_image = pygame.image.load('image/bg.jpg').convert()
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Game by Koyomi')
+pygame.display.set_caption('Chicken Invaders')
 back_image = pygame.image.load('image/back.png')
 back_image = pygame.transform.scale(back_image, (SCREEN_WIDTH/10, SCREEN_HEIGHT/10))
 imformtion_image = pygame.image.load('image/team.jpg').convert()

@@ -7,7 +7,7 @@ from display_on_screen import display_setting
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 
-pygame.display.set_caption('Game by Koyomi')
+pygame.display.set_caption('Chicken Invaders')
 background_image = pygame.image.load('image/bg.jpg').convert()
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 

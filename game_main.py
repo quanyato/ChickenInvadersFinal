@@ -170,6 +170,9 @@ def main():
                 base.y_loc -= SETTING_BASE_SPEED
                 if base.y_loc < 0:
                     base.y_loc = 0
+            # set up nut thoat game
+            if key_pressed[pygame.K_ESCAPE]:
+                base.check_game_over = "true"
             # set up nut space
             if key_pressed[pygame.K_SPACE]  and base_missile.missile_firing  is False  and base.game_over == "false":
                 base_missile.missile_firing = True

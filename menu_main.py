@@ -9,7 +9,11 @@ SCREEN_HEIGHT = 614
 
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Chicken Invaders')
-background_image = pygame.image.load('image/bg.jpg').convert()
+#background_image = pygame.image.load('image/bg.jpg').convert()
+bg_image = pygame.image.load("image/back_loop.jpg").convert_alpha()
+bg_height = bg_image.get_height()
+back_scroll_speed=0
+
 logo_image = pygame.transform.scale(pygame.image.load('image/logo.png'), (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
 play_image = pygame.transform.scale(pygame.image.load('image/play.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
 quit_image = pygame.transform.scale(pygame.image.load('image/quit.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
@@ -18,7 +22,7 @@ contact_image = pygame.transform.scale(pygame.image.load('image/contact.png'), (
 option_image = pygame.transform.scale(pygame.image.load('image/option.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
 
 music_image =  pygame.transform.scale(pygame.image.load('image/music_button.png'), (50, 50))
-naruto_sound = pygame.mixer.Sound('music/naruto.mp3')
+theme_song = pygame.mixer.Sound('music/aov_song.wav')
 music_one_time = True   # chạy nhạc 1 lần
 
 play_button=button.Button(400, 350, play_image)
@@ -27,14 +31,22 @@ option_button=button.Button(400, 450, option_image)
 contact_button=button.Button(400, 500, contact_image)
 quit_button=button.Button(400, 550, quit_image)
 
+def draw_background():
+    global back_scroll_speed
+    for x in range (2):
+        game_screen.blit(bg_image, (0, ((-x * bg_height)-back_scroll_speed)))
+
 run=True
 while run:
-
     if music_one_time:
-        naruto_sound.play()
+        theme_song.play()
         music_one_time = False
              
-    game_screen.blit(background_image, [0, 0])
+    draw_background()
+    back_scroll_speed -= 0.2
+    if abs(back_scroll_speed) > bg_height:
+        back_scroll_speed=0
+    #game_screen.blit(background_image, [0, 0])
     game_screen.blit(logo_image, [250,50])
     game_screen.blit(music_image, [850,530])
 

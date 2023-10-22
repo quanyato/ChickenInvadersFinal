@@ -11,11 +11,11 @@ pygame.display.set_caption('Chicken Invaders')
 background_image = pygame.image.load('image/bg.jpg').convert()
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-back_image = pygame.transform.scale(pygame.image.load('image/back.png'), (SCREEN_WIDTH/10, SCREEN_HEIGHT/10))
+back_image = pygame.transform.scale(pygame.image.load('image/back.png'), (SCREEN_WIDTH//10, SCREEN_HEIGHT//10))
 
-b1_image = pygame.transform.scale(pygame.image.load('image/button1.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/10))
-b2_image = pygame.transform.scale(pygame.image.load('image/button2.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/10))
-b3_image = pygame.transform.scale(pygame.image.load('image/button3.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/10))
+b1_image = pygame.transform.scale(pygame.image.load('image/button1.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//10))
+b2_image = pygame.transform.scale(pygame.image.load('image/button2.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//10))
+b3_image = pygame.transform.scale(pygame.image.load('image/button3.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//10))
 sound = pygame.mixer.Sound('music/Asphyxia.mp3')
 music_one_time = True   # chạy nhạc 1 lần
 
@@ -51,24 +51,24 @@ while run:
     if b1.draw()==True:
         pygame.quit()
         level1()
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
     
     if b2.draw()==True:
         pygame.quit()
         level2()
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
 
     if b3.draw()==True:
         pygame.quit()
         level3()
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
 
     if back_button.draw()==True:
         pygame.quit()
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
     
     display_setting()

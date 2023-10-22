@@ -19,7 +19,7 @@ SCREEN_HEIGHT = 614
 
 LIGHT_YELLOW = (255, 255, 204)
 winner_image =  pygame.image.load('image/winner.png')
-winner_image  = pygame.transform.scale(winner_image , (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
+winner_image  = pygame.transform.scale(winner_image , (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
 font1 = pygame.font.SysFont('Algerian', 50)     # font chữ
 
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

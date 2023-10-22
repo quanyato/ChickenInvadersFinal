@@ -9,7 +9,13 @@ pygame.init()
 #======================================================================================
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
+explosion_sound = pygame.mixer.Sound('music/explosion.mp3')
 launch_sound = pygame.mixer.Sound('music/launch.ogg')
+quac_sound = []
+quac_sound.append(pygame.mixer.Sound('music/quac_1.mp3'))
+quac_sound.append(pygame.mixer.Sound('music/quac_2.mp3'))
+quac_sound.append(pygame.mixer.Sound('music/quac_3.mp3'))
+
 #======================================================================================
 def check_base_missile_and_chicken(chicken,base_missile,base):
     # score_if_hit = 0
@@ -22,7 +28,7 @@ def check_base_missile_and_chicken(chicken,base_missile,base):
                 chicken.hit = True
                 chicken.hit_time = 100 #UFO_HIT_TIME
                 chicken.off_time = 200
-                launch_sound.play() # gọi file âm thanh
+                random.choice(quac_sound).play() # gọi file âm thanh
                 base.score += 10
                               
 #=======================================================================================
@@ -48,6 +54,7 @@ def check_base_and_chicken_missile(base,chicken_missile):
     chicken_missile_rect = pygame.Rect(chicken_missile.x_loc, chicken_missile.y_loc, Chicken_modul.chicken_missile_width, Chicken_modul.chicken_missile_height)
     # check từng viện đan của ufo với xe
     if base_rect.colliderect(chicken_missile_rect) == True:
+        explosion_sound.play()
         base.hp -= 5   # giảm máu
         base.time_boom = 40
         chicken_missile.y_loc = SCREEN_HEIGHT   # xóa đạn ufo
@@ -82,6 +89,7 @@ def check_base_missile_and_boss(boss,base_missile,base):
             base_missile.missile_firing = False
             if boss.time_defense <= 0:
                 boss.hp -= base_missile.sub_hp_boss
+                random.choice(quac_sound).play()
                 base.score += 10
 
 #====================================================================
@@ -94,6 +102,7 @@ def check_base_and_boss_missile(base,boss_missile):
 
     if base_rect.colliderect(boss_missile_rect) or base_rect.colliderect(boss_missile_rect1) or base_rect.colliderect(boss_missile_rect2):
         base.hp -= 0.5   # giảm máu
+        explosion_sound.play()
         base.time_boom = 10
 
 #========================================================
@@ -103,6 +112,7 @@ def check_roket_and_boss(boss,rocket,base):
         rocket_rect = pygame.Rect(rocket.x_loc - rocket_modul.rocket_width / 2.5, 30, rocket_modul.rocket_width, rocket_modul.rocket_height )
         if rocket_rect.colliderect(chicken_rect): # nếu băn trúng
             boss.hp -= 0.3
+            random.choice(quac_sound).play()
             base.score += 1
             
 #==============================================================
@@ -112,4 +122,5 @@ def check_base_and_boss(base,boss):
     # check boss với xe
     if base_rect.colliderect(boss_rect) :
         base.hp -= 0.3   # giảm máu
+        explosion_sound.play()
         base.time_boom = 10

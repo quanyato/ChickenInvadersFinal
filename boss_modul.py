@@ -17,6 +17,8 @@ danger_image = pygame.image.load('image/danger_boss.png').convert_alpha()
 boss_missile_width = boss_missile_image.get_rect().width
 boss_missile_height = boss_missile_image.get_rect().height
 
+alert = True
+boss_alert_sound = pygame.mixer.Sound('music/enemy-detected.mp3')
 class Boss:
     x_loc = 250
     y_loc = -500
@@ -33,10 +35,15 @@ class Boss:
     statu = 'disappear'
 
     def check_boss_appear(self,base,chicken_list,num):
+        global alert
         if base.score >= num *  40:
             for i in chicken_list:
                 i.hit = True 
-            if self.hp > 0: self.statu = 'appear'   
+            if self.hp > 0:
+                if alert:
+                    boss_alert_sound.play()
+                    alert = False
+                self.statu = 'appear'   
             
 
     def draw_boss(self):

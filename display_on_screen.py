@@ -69,20 +69,20 @@ def display_game_over(base):
         game_screen.blit( base_destroyed_image, [base.x_loc-10, base.y_loc-10] )
         score_text = 'Score: ' + str(base.score)
         display_text = font1.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [300,400])
-        score_text = 'Thank You For Playing ^^!'
+        game_screen.blit(display_text , [350,400])
+        score_text = 'Thank You For Playing'
         display_text = font1.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [150,470])
+        game_screen.blit(display_text , [180,480])
 
 def display_winner(base):
     if base.winner == "checked":
         game_screen.blit(winner_image, [220,70])
         score_text = 'Score: ' + str(base.score)
         display_text = font1.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [300,400])
-        score_text = 'Thank You For Playing ^^!'
+        game_screen.blit(display_text , [400,400])
+        score_text = 'Thank You For Playing'
         display_text = font1.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [150,480])
+        game_screen.blit(display_text , [250,480])
 
 def display_setting():
     txt1 = font1.render(" SET THE NUMBER OF CHICKENS", True, LIGHT_YELLOW)

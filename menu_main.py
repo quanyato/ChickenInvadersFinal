@@ -43,7 +43,7 @@ while run:
         music_one_time = False
              
     draw_background()
-    back_scroll_speed -= 0.2
+    back_scroll_speed -= 0.1
     if abs(back_scroll_speed) > bg_height:
         back_scroll_speed=0
     #game_screen.blit(background_image, [0, 0])

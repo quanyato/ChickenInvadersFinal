@@ -10,7 +10,7 @@ from rocket_modul import Rocket, rocket_width
 from display_on_screen import display_on_screen,display_boss_hp,display_game_over,display_winner
 from boss_modul import Boss,Boss_missile
 import Base_modul
-
+from pygame import mixer
 NUM_OF_CHICKEN = 0 
 
 SETTING_BASE_SPEED = 7
@@ -35,7 +35,10 @@ bg_image = pygame.image.load("image/back_loop.jpg").convert_alpha()
 bg_height = bg_image.get_height()
 back_scroll_speed=0
 
-spaceship_hit_sound = pygame.mixer.Sound('music/spaceship_hit.ogg')
+background_song = mixer.music.load('music/wildrift_backsong.mp3')
+mixer.music.set_volume(0.2)
+mixer.music.play(-1)
+spaceship_hit_sound = pygame.mixer.Sound('music/laserSmall_000.ogg')
 boom_sound = pygame.mixer.Sound('music/boom_sound.mp3')
 
 def draw_background():

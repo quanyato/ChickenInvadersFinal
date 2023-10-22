@@ -2,6 +2,7 @@ import pygame
 import random
 import sys
 
+pygame.mixer.init()
 
 pygame.init()
 
@@ -13,13 +14,13 @@ font = pygame.font.SysFont('Helvetica', 20)     # font chữ
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 base_image = pygame.image.load('image/base.png').convert_alpha()
-base_image = pygame.transform.scale(base_image, (SCREEN_WIDTH/18, SCREEN_HEIGHT/15))
+base_image = pygame.transform.scale(base_image, (SCREEN_WIDTH//18, SCREEN_HEIGHT//15))
 xe_no_image = pygame.image.load('image/vu_no_3.png')
-xe_no_image = pygame.transform.scale(xe_no_image, (SCREEN_WIDTH/8, SCREEN_HEIGHT/8))
+xe_no_image = pygame.transform.scale(xe_no_image, (SCREEN_WIDTH//8, SCREEN_HEIGHT//8))
 base_width = base_image.get_rect().width   
 base_height = base_image.get_rect().height 
 vu_no_image = pygame.image.load('image/vu_no.png')
-vu_no_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH/9, SCREEN_HEIGHT/9))
+vu_no_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH//9, SCREEN_HEIGHT//9))
 
 base_missile_image = pygame.image.load('image/dan.png').convert_alpha()
 base_missile_image  = pygame.transform.scale(base_missile_image, (30,40))
@@ -27,7 +28,7 @@ base_missile_width = base_missile_image.get_rect().width
 base_missile_height = base_missile_image.get_rect().height
 
 defense_image =  pygame.image.load('image/ray.png').convert_alpha()
-defense_image = pygame.transform.scale(defense_image, (SCREEN_WIDTH/6, SCREEN_HEIGHT/6))
+defense_image = pygame.transform.scale(defense_image, (SCREEN_WIDTH//6, SCREEN_HEIGHT//6))
 
 game_over_sound = pygame.mixer.Sound('music/game_over_music.mp3')
 winner_sound = pygame.mixer.Sound('music/winner.mp3')

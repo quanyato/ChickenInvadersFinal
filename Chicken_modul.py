@@ -6,15 +6,15 @@ SCREEN_HEIGHT = 614
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 vu_no_image = pygame.image.load('image/vu_no.png')
-vu_no_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH/9, SCREEN_HEIGHT/9))
-ga_1_image = pygame.transform.scale(pygame.image.load('image/ga1.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_2_image = pygame.transform.scale(pygame.image.load('image/ga2.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_3_image = pygame.transform.scale(pygame.image.load('image/ga3.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_4_image = pygame.transform.scale(pygame.image.load('image/ga4.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_5_image = pygame.transform.scale(pygame.image.load('image/ga5.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_6_image = pygame.transform.scale(pygame.image.load('image/ga6.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_7_image = pygame.transform.scale(pygame.image.load('image/ga7.png'), (SCREEN_WIDTH/15, SCREEN_HEIGHT/15))
-ga_exploded_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH/10, SCREEN_HEIGHT/10))
+vu_no_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH//9, SCREEN_HEIGHT//9))
+ga_1_image = pygame.transform.scale(pygame.image.load('image/ga1.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_2_image = pygame.transform.scale(pygame.image.load('image/ga2.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_3_image = pygame.transform.scale(pygame.image.load('image/ga3.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_4_image = pygame.transform.scale(pygame.image.load('image/ga4.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_5_image = pygame.transform.scale(pygame.image.load('image/ga5.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_6_image = pygame.transform.scale(pygame.image.load('image/ga6.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_7_image = pygame.transform.scale(pygame.image.load('image/ga7.png'), (SCREEN_WIDTH//15, SCREEN_HEIGHT//15))
+ga_exploded_image = pygame.transform.scale(vu_no_image, (SCREEN_WIDTH//10, SCREEN_HEIGHT//10))
 
 
 chicken_width = ga_1_image.get_rect().width
@@ -35,7 +35,7 @@ RANDOM_VERTICAL_CHANGE = 20 # tỷ lê nâng ngang (1/x)
 RANDOM_HORIZONTAL_CHANGE = 80 # tỷ lê nâng dọc (1/x)
 #-------------------------------------------------------------------------------------------
 chicken_missile_image = pygame.image.load('image/trung_ga.png')
-chicken_missile_image = pygame.transform.scale(chicken_missile_image, (SCREEN_WIDTH/50, SCREEN_HEIGHT/40))
+chicken_missile_image = pygame.transform.scale(chicken_missile_image, (SCREEN_WIDTH//50, SCREEN_HEIGHT//40))
 
 chicken_missile_width = chicken_missile_image.get_rect().width
 chicken_missile_height = chicken_missile_image.get_rect().height 
@@ -45,7 +45,7 @@ chicken_ray_image_2 = pygame.image.load('image/ufo ray 2.png').convert_alpha()
 ray_width = chicken_ray_image_1.get_rect().width
 #--------------------------------------------------------------------
 chicken_thighs_image = pygame.image.load('image/dui_ga.png').convert_alpha()
-chicken_thighs_image = pygame.transform.scale(chicken_thighs_image, (SCREEN_WIDTH/35, SCREEN_HEIGHT/17))
+chicken_thighs_image = pygame.transform.scale(chicken_thighs_image, (SCREEN_WIDTH//35, SCREEN_HEIGHT//17))
 chicken_thighs_width = chicken_thighs_image.get_rect().width   
 chicken_thighs_height = chicken_thighs_image.get_rect().height 
 #----------------------------------------------------------------------

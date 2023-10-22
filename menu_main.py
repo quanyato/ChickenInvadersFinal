@@ -10,12 +10,12 @@ SCREEN_HEIGHT = 614
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Chicken Invaders')
 background_image = pygame.image.load('image/bg.jpg').convert()
-logo_image = pygame.transform.scale(pygame.image.load('image/logo.png'), (SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
-play_image = pygame.transform.scale(pygame.image.load('image/play.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
-quit_image = pygame.transform.scale(pygame.image.load('image/quit.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
-setting_image = pygame.transform.scale(pygame.image.load('image/setting.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
-contact_image = pygame.transform.scale(pygame.image.load('image/contact.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
-option_image = pygame.transform.scale(pygame.image.load('image/option.png'), (SCREEN_WIDTH/5, SCREEN_HEIGHT/15))
+logo_image = pygame.transform.scale(pygame.image.load('image/logo.png'), (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
+play_image = pygame.transform.scale(pygame.image.load('image/play.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
+quit_image = pygame.transform.scale(pygame.image.load('image/quit.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
+setting_image = pygame.transform.scale(pygame.image.load('image/setting.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
+contact_image = pygame.transform.scale(pygame.image.load('image/contact.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
+option_image = pygame.transform.scale(pygame.image.load('image/option.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
 
 music_image =  pygame.transform.scale(pygame.image.load('image/music_button.png'), (50, 50))
 naruto_sound = pygame.mixer.Sound('music/naruto.mp3')
@@ -48,23 +48,23 @@ while run:
 
     if contact_button.draw()==True:
         pygame.quit()
-        os.system('py contact.py')
+        os.system('python contact.py')
         sys.exit() 
 
     if option_button.draw() == True:
         pygame.quit()
-        os.system('py imformation.py')
+        os.system('python imformation.py')
         sys.exit() 
     
     if setting_button.draw() == True:
         pygame.quit()
-        os.system('py setting_main.py')
+        os.system('python setting_main.py')
         sys.exit() 
 
     if play_button.draw()==True: 
         pygame.quit()
         os.system('python game_main.py')
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
 
     pygame.display.update()

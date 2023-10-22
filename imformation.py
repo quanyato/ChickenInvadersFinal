@@ -10,9 +10,9 @@ background_image = pygame.image.load('image/bg.jpg').convert()
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Chicken Invaders')
 back_image = pygame.image.load('image/back.png')
-back_image = pygame.transform.scale(back_image, (SCREEN_WIDTH/10, SCREEN_HEIGHT/10))
+back_image = pygame.transform.scale(back_image, (SCREEN_WIDTH//10, SCREEN_HEIGHT//10))
 informtion_image = pygame.image.load('image/information.jpg')
-informtion_image = pygame.transform.scale(informtion_image, (SCREEN_WIDTH/1.5, SCREEN_HEIGHT/1.5))
+informtion_image = pygame.transform.scale(informtion_image, (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
 
 sound1 = pygame.mixer.Sound('music/first_date.mp3')
 music_one_time = True   # chạy nhạc 1 lần
@@ -34,7 +34,7 @@ while run:
        
     if back_button.draw()==True:
         pygame.quit()
-        os.system('py menu_main.py')
+        os.system('python menu_main.py')
         sys.exit()
 
     pygame.display.update()

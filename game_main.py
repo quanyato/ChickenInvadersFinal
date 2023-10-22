@@ -31,7 +31,7 @@ pygame.key.set_repeat(10,20)   # giu nut se tang toc do
 # background_image = pygame.image.load('image/bg.jpg').convert_alpha()
 # background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-bg_image = pygame.image.load("image/back_0.jpg").convert_alpha()
+bg_image = pygame.image.load("image/back_loop.jpg").convert_alpha()
 bg_height = bg_image.get_height()
 back_scroll_speed=0
 
@@ -80,7 +80,7 @@ def main():
 
         #game_screen.blit(background_image, [0, 0]) ---old background
         draw_background()
-        back_scroll_speed -= 0.6
+        back_scroll_speed -= 0.2
         if abs(back_scroll_speed) > bg_height:
             back_scroll_speed=0
 

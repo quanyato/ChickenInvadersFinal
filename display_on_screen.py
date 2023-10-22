@@ -9,8 +9,8 @@ pygame.init()
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-font1 = pygame.font.SysFont('Algerian', 50)     # font chữ
-font = pygame.font.SysFont('Helvetica', 20)     # font chữ
+font1 = pygame.font.Font('Fonts/Alien_energy.ttf', 44)     # font chữ
+font = pygame.font.Font('Fonts/Alien_energy.ttf', 20)     # font chữ
 LIGHT_YELLOW = (255, 255, 204)
 WHITE = (255, 255, 255)
 BLUE = ( 0,0,255)
@@ -85,8 +85,8 @@ def display_winner(base):
         game_screen.blit(display_text , [150,480])
 
 def display_setting():
-    txt1 = font1.render("SET THE NUMBER OF CHICKENS", True, LIGHT_YELLOW)
+    txt1 = font1.render(" SET THE NUMBER OF CHICKENS", True, LIGHT_YELLOW)
     game_screen.blit(txt1,[100,200])
-    txt1 = font1.render("     10                             20                             30", True, LIGHT_YELLOW)
-    game_screen.blit(txt1,[100,308])
+    txt1 = font1.render("   10               20              30", True, LIGHT_YELLOW)
+    game_screen.blit(txt1,[100,304])
     

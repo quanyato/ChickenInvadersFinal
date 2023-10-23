@@ -9,46 +9,56 @@ SCREEN_HEIGHT = 614
 
 game_screen=pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Chicken Invaders')
-#background_image = pygame.image.load('image/bg.jpg').convert()
+
 bg_image = pygame.image.load("image/back_loop.jpg").convert_alpha()
 bg_height = bg_image.get_height()
-back_scroll_speed=0
-
-logo_image = pygame.transform.scale(pygame.image.load('image/logo.png'), (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
-play_image = pygame.transform.scale(pygame.image.load('image/play.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
-quit_image = pygame.transform.scale(pygame.image.load('image/quit.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
-setting_image = pygame.transform.scale(pygame.image.load('image/setting.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
-contact_image = pygame.transform.scale(pygame.image.load('image/contact.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
-option_image = pygame.transform.scale(pygame.image.load('image/option.png'), (SCREEN_WIDTH//5, SCREEN_HEIGHT//15))
-
-music_image =  pygame.transform.scale(pygame.image.load('image/music_button.png'), (50, 50))
-theme_song = pygame.mixer.Sound('music/aov_song.wav')
-music_one_time = True   # chạy nhạc 1 lần
-
-play_button=button.Button(400, 350, play_image)
-setting_button=button.Button(400, 400, setting_image)
-option_button=button.Button(400, 450, option_image)
-contact_button=button.Button(400, 500, contact_image)
-quit_button=button.Button(400, 550, quit_image)
-
+bg_scroll_position=0
 def draw_background():
-    global back_scroll_speed
+    global bg_scroll_position
     for x in range (2):
-        game_screen.blit(bg_image, (0, ((-x * bg_height)-back_scroll_speed)))
+        game_screen.blit(bg_image, (0, ((-x * bg_height)-bg_scroll_position)))
+
+font = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 18)
+def draw_text_btn(text, xbtn_pos, ybtn_pos, btn_width, btn_height):
+    text_render = font.render(text, True, (255,255,255))
+    width, height = font.size(text)
+    text_x_pos = xbtn_pos + (btn_width//2 - width//2)
+    text_y_pos = ybtn_pos + (btn_height//2 - height//2)
+    game_screen.blit(text_render, (text_x_pos, text_y_pos))
+
+logo_image = pygame.image.load('image/logo-small-scale.png')
+play_image = pygame.image.load('image/btn-frame.png')
+quit_image = pygame.image.load('image/btn-frame.png')
+setting_image = pygame.image.load('image/btn-frame.png')
+contact_image = pygame.image.load('image/btn-frame.png')
+option_image = pygame.image.load('image/btn-frame.png')
+music_image =  pygame.image.load('image/btn-mute.png')
+
+pygame.mixer.music.load('music/aov_song.wav')
+pygame.mixer.music.set_volume(0.9)
+pygame.mixer.music.play(-1)
+
+play_button=button.Button(360, 284, play_image)
+setting_button=button.Button(360, 334, setting_image)
+option_button=button.Button(360, 384, option_image)
+contact_button=button.Button(360, 434, contact_image)
+quit_button=button.Button(360, 484, quit_image)
 
 run=True
-while run:
-    if music_one_time:
-        theme_song.play()
-        music_one_time = False
-             
+while run: 
     draw_background()
-    back_scroll_speed -= 0.1
-    if abs(back_scroll_speed) > bg_height:
-        back_scroll_speed=0
-    #game_screen.blit(background_image, [0, 0])
-    game_screen.blit(logo_image, [250,50])
-    game_screen.blit(music_image, [850,530])
+    bg_scroll_position -= 0.1
+    if abs(bg_scroll_position) > bg_height:
+        bg_scroll_position=0
+
+    draw_text_btn('PLAY', 360, 284, play_image.get_width(), play_image.get_height())
+    draw_text_btn('SETTING', 360, 334, play_image.get_width(), play_image.get_height())
+    draw_text_btn('INFORMATION', 360, 384, play_image.get_width(), play_image.get_height())
+    draw_text_btn('CONTACT US', 360, 434, play_image.get_width(), play_image.get_height())
+    draw_text_btn('QUIT', 360, 484, play_image.get_width(), play_image.get_height())
+
+    game_screen.blit(logo_image, [295,60])
+    game_screen.blit(music_image, [870,530])
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

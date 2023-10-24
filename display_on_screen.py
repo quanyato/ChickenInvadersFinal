@@ -9,8 +9,16 @@ pygame.init()
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-font1 = pygame.font.Font('Fonts/Alien_energy.ttf', 44)     # font chữ
-font = pygame.font.Font('Fonts/Alien_energy.ttf', 20)     # font chữ
+font1 = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 44)
+
+font = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 18)
+def draw_text_btn(text, xbtn_pos, ybtn_pos, btn_width, btn_height):
+    text_render = font.render(text, True, (255,255,255))
+    width, height = font.size(text)
+    text_x_pos = xbtn_pos + (btn_width//2 - width//2)
+    text_y_pos = ybtn_pos + (btn_height//2 - height//2)
+    game_screen.blit(text_render, (text_x_pos, text_y_pos))
+
 LIGHT_YELLOW = (255, 255, 204)
 WHITE = (255, 255, 255)
 BLUE = ( 0,0,255)
@@ -83,10 +91,3 @@ def display_winner(base):
         score_text = 'Thank You For Playing'
         display_text = font1.render(score_text, True, LIGHT_YELLOW)
         game_screen.blit(display_text , [250,480])
-
-def display_setting():
-    txt1 = font1.render(" SET THE NUMBER OF CHICKENS", True, LIGHT_YELLOW)
-    game_screen.blit(txt1,[100,200])
-    txt1 = font1.render("   10               20              30", True, LIGHT_YELLOW)
-    game_screen.blit(txt1,[100,304])
-    

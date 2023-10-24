@@ -27,8 +27,8 @@ quit_image = pygame.image.load('image/btn-frame.png')
 setting_image = pygame.image.load('image/btn-frame.png')
 contact_image = pygame.image.load('image/btn-frame.png')
 option_image = pygame.image.load('image/btn-frame.png')
-music_image =  pygame.image.load('image/btn-mute.png')
-music_mute_image = pygame.image.load('image/btn-menu.png')
+music_image =  pygame.image.load('image/btn-unmute.png')
+music_mute_image = pygame.image.load('image/btn-mute.png')
 
 def draw_music_button(status):
     if status:

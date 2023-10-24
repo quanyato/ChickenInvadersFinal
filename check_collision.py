@@ -11,6 +11,7 @@ SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 explosion_sound = pygame.mixer.Sound('music/explosion.mp3')
 launch_sound = pygame.mixer.Sound('music/launch.ogg')
+eat_sound = pygame.mixer.Sound('music/eating.mp3')
 quac_sound = []
 quac_sound.append(pygame.mixer.Sound('music/quac_1.mp3'))
 quac_sound.append(pygame.mixer.Sound('music/quac_2.mp3'))
@@ -65,6 +66,7 @@ def check_base_and_chicken_thighs(base,chicken_thighs):
     chicken_thighs_rect = pygame.Rect(chicken_thighs.x_loc, chicken_thighs.y_loc, Chicken_modul.chicken_thighs_width, Chicken_modul.chicken_thighs_height)
     # check từng viện đan của ufo với xe
     if base_rect.colliderect(chicken_thighs_rect) == True:
+        eat_sound.play()
         base.num_chicken_thighs += 1   # giảm máu
         chicken_thighs.y_loc = SCREEN_HEIGHT   # xóa đạn ufo
 #========================================================

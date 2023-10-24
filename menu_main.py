@@ -2,6 +2,7 @@ import pygame
 import os
 import sys
 import button
+from display_on_screen import draw_text_center
 pygame.init()
 
 SCREEN_WIDTH = 960
@@ -17,14 +18,6 @@ def draw_background():
     global bg_scroll_position
     for x in range (2):
         game_screen.blit(bg_image, (0, ((-x * bg_height)-bg_scroll_position)))
-
-font = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 18)
-def draw_text_btn(text, xbtn_pos, ybtn_pos, btn_width, btn_height):
-    text_render = font.render(text, True, (255,255,255))
-    width, height = font.size(text)
-    text_x_pos = xbtn_pos + (btn_width//2 - width//2)
-    text_y_pos = ybtn_pos + (btn_height//2 - height//2)
-    game_screen.blit(text_render, (text_x_pos, text_y_pos))
 
 logo_image = pygame.image.load('image/logo-small-scale.png')
 play_image = pygame.image.load('image/btn-frame.png')
@@ -51,11 +44,11 @@ while run:
     if abs(bg_scroll_position) > bg_height:
         bg_scroll_position=0
 
-    draw_text_btn('PLAY', 360, 284, play_image.get_width(), play_image.get_height())
-    draw_text_btn('SETTING', 360, 334, play_image.get_width(), play_image.get_height())
-    draw_text_btn('INFORMATION', 360, 384, play_image.get_width(), play_image.get_height())
-    draw_text_btn('CONTACT US', 360, 434, play_image.get_width(), play_image.get_height())
-    draw_text_btn('QUIT', 360, 484, play_image.get_width(), play_image.get_height())
+    draw_text_center('PLAY', 18, 360, 284, play_image.get_width(), play_image.get_height())
+    draw_text_center('SETTING', 18, 360, 334, play_image.get_width(), play_image.get_height())
+    draw_text_center('INFORMATION', 18, 360, 384, play_image.get_width(), play_image.get_height())
+    draw_text_center('CONTACT US', 18, 360, 434, play_image.get_width(), play_image.get_height())
+    draw_text_center('QUIT', 18, 360, 484, play_image.get_width(), play_image.get_height())
 
     game_screen.blit(logo_image, [295,60])
     game_screen.blit(music_image, [870,530])

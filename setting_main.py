@@ -2,7 +2,7 @@ import pygame
 import os
 import sys
 import button
-from display_on_screen import draw_text_btn
+from display_on_screen import draw_text_center
 
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
@@ -82,10 +82,10 @@ while run:
         sys.exit()
     
     game_screen.blit(frame_image, (190, 130))
-    draw_text_btn("SET THE NUMBER OF CHICKENS", 190, 130, 580, 84)
-    draw_text_btn("10 CHICKENS", 360, 234, btn_width, btn_height)
-    draw_text_btn("20 CHICKENS", 360, 284, btn_width, btn_height)
-    draw_text_btn("30 CHICKENS", 360, 334, btn_width, btn_height)
+    draw_text_center("SET THE NUMBER OF CHICKENS", 24, 190, 130, 580, 84)
+    draw_text_center("10 CHICKENS", 18, 360, 234, btn_width, btn_height)
+    draw_text_center("20 CHICKENS", 18, 360, 284, btn_width, btn_height)
+    draw_text_center("30 CHICKENS", 18, 360, 334, btn_width, btn_height)
 
     pygame.display.update()
 pygame.quit()

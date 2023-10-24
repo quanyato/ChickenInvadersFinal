@@ -9,14 +9,16 @@ pygame.init()
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-font1 = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 44)
+font_large = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 24)
+font_small = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 14)
+font_regular = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 18)
 
-font = pygame.font.Font('Fonts/Aldrich-Regular.ttf', 18)
-def draw_text_btn(text, xbtn_pos, ybtn_pos, btn_width, btn_height):
-    text_render = font.render(text, True, (255,255,255))
+def draw_text_center(text="",font_size=0, frame_x=0, frame_y=0, frame_width=0, frame_height=0):
+    font = pygame.font.Font('Fonts/Aldrich-Regular.ttf', font_size)
     width, height = font.size(text)
-    text_x_pos = xbtn_pos + (btn_width//2 - width//2)
-    text_y_pos = ybtn_pos + (btn_height//2 - height//2)
+    text_render = font.render(text, True, (255,255,255))
+    text_x_pos = frame_x + (frame_width//2 - width//2)
+    text_y_pos = frame_y + (frame_height//2 - height//2)
     game_screen.blit(text_render, (text_x_pos, text_y_pos))
 
 LIGHT_YELLOW = (255, 255, 204)
@@ -46,19 +48,19 @@ winner_image  = pygame.transform.scale(winner_image , (SCREEN_WIDTH//2, SCREEN_H
 
 def display_on_screen(base):
     score_text = 'Score: ' + str(base.score)
-    display_text = font.render(score_text, True, LIGHT_YELLOW)
+    display_text = font_regular.render(score_text, True, LIGHT_YELLOW)
     game_screen.blit(display_text , [30,30])
 
     if base.hp < 0: base.hp=0
-    hp_left_text = font.render(str(round(base.hp)*1.0) + ' %', True, LIGHT_YELLOW)
+    hp_left_text = font_regular.render(str(round(base.hp)*1.0) + ' %', True, LIGHT_YELLOW)
     game_screen.blit(hp_left_text, [60,60])
     game_screen.blit(hp_mini, [25,60])
 
-    rk_left_text = font.render(str(base.rocket), True, LIGHT_YELLOW)
+    rk_left_text = font_regular.render(str(base.rocket), True, LIGHT_YELLOW)
     game_screen.blit(rk_left_text, [60,100])
     game_screen.blit(rocket_mini, [20,85])
 
-    dui_ga_text = font.render(str(base.num_chicken_thighs), True, LIGHT_YELLOW)
+    dui_ga_text = font_regular.render(str(base.num_chicken_thighs), True, LIGHT_YELLOW)
     game_screen.blit(dui_ga_text, [60,130])
     game_screen.blit(dui_ga_mini, [30,130])
 
@@ -69,25 +71,25 @@ def display_boss_hp(boss):
     pygame.draw.rect(game_screen, RED, (250+500-2,20,2,25))
     pygame.draw.rect(game_screen, RED, (250,20,2,25))
     game_screen.blit(boss_mini, [200, 10])
-    game_screen.blit(font.render(str(round(boss.hp*10)/10.0) + " % HP", True, LIGHT_YELLOW), [250 +200, 20])
+    game_screen.blit(font_regular.render(str(round(boss.hp*10)/10.0) + " % HP", True, LIGHT_YELLOW), [250 +200, 20])
 
 def display_game_over(base):
     if base.game_over == "checked":
         game_screen.blit(game_over_image, [220,50])
         game_screen.blit( base_destroyed_image, [base.x_loc-10, base.y_loc-10] )
         score_text = 'Score: ' + str(base.score)
-        display_text = font1.render(score_text, True, LIGHT_YELLOW)
+        display_text = font_large.render(score_text, True, LIGHT_YELLOW)
         game_screen.blit(display_text , [350,400])
         score_text = 'Thank You For Playing'
-        display_text = font1.render(score_text, True, LIGHT_YELLOW)
+        display_text = font_large.render(score_text, True, LIGHT_YELLOW)
         game_screen.blit(display_text , [180,480])
 
 def display_winner(base):
     if base.winner == "checked":
         game_screen.blit(winner_image, [220,70])
         score_text = 'Score: ' + str(base.score)
-        display_text = font1.render(score_text, True, LIGHT_YELLOW)
+        display_text = font_large.render(score_text, True, LIGHT_YELLOW)
         game_screen.blit(display_text , [400,400])
         score_text = 'Thank You For Playing'
-        display_text = font1.render(score_text, True, LIGHT_YELLOW)
+        display_text = font_large.render(score_text, True, LIGHT_YELLOW)
         game_screen.blit(display_text , [250,480])

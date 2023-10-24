@@ -26,7 +26,7 @@ pygame.mixer.music.load('music/aov_song.wav')
 pygame.mixer.music.set_volume(0.8)
 pygame.mixer.music.play(-1)
 
-description_text = 'Trò chơi là cuộc chiến giữa một phi thuyền đơn độc và một chủng tộc gà đến từ không gian, sở hữu các công nghệ tiên tiến, những sinh vật có ý định chinh phục Trái đất.'
+description_text = '     Trò chơi là cuộc chiến giữa một phi thuyền đơn độc và một chủng tộc gà đến từ không gian, sở hữu các công nghệ tiên tiến, những sinh vật có ý định chinh phục Trái đất.\n  - Di chuyển bằng các phím mũi tên hoặc ASWD.\n  - Tấn công thường bằng phím space.\n  - Tấn công đặc biệt bằng phím R.'
 
 run=True
 back_button = button.Button(200,140,back_image)

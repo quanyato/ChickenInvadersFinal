@@ -21,6 +21,23 @@ def draw_text_center(text="",font_size=0, frame_x=0, frame_y=0, frame_width=0, f
     text_y_pos = frame_y + (frame_height//2 - height//2)
     game_screen.blit(text_render, (text_x_pos, text_y_pos))
 
+def text_multiple_line(text='', pos=(0, 0), frame_width=0, font_size=0, color=(255,255,255)):
+    font = pygame.font.Font('Fonts/Play-Regular.ttf', font_size)
+    collection = [word.split(' ') for word in text.splitlines()]
+    space = font.size(' ')[0]
+    x,y = pos
+    for lines in collection:
+        for words in lines:
+            word_surface = font.render(words, True, color)
+            word_width , word_height = word_surface.get_size()
+            if x + word_width >= frame_width+pos[0]:
+                x = pos[0]
+                y += word_height
+            game_screen.blit(word_surface, (x,y))
+            x += word_width + space
+        x = pos[0]
+        y += word_height
+
 LIGHT_YELLOW = (255, 255, 204)
 WHITE = (255, 255, 255)
 BLUE = ( 0,0,255)

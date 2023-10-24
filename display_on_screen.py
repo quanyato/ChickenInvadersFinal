@@ -4,6 +4,8 @@ import Chicken_modul
 import random
 import sys
 import boss_modul
+import button
+import os
 pygame.init()
 #======================================================================================
 SCREEN_WIDTH = 960
@@ -47,12 +49,9 @@ rocket_image = pygame.image.load('image/rocket.png')
 rocket_image = pygame.transform.scale(rocket_image, (SCREEN_WIDTH//6, SCREEN_HEIGHT//3))
 big_boom_image = pygame.image.load('image/vu_no_2.png')
 big_boom_image = pygame.transform.scale(big_boom_image, (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
-dui_ga_mini = pygame.image.load('image/dui_ga.png').convert_alpha()
-dui_ga_mini =  pygame.transform.scale(dui_ga_mini, (SCREEN_WIDTH//45, SCREEN_HEIGHT//20))
-hp_mini = pygame.image.load('image/hp.png').convert_alpha()
-hp_mini =  pygame.transform.scale(hp_mini, (SCREEN_WIDTH//35, SCREEN_HEIGHT//25))
-rocket_mini = pygame.image.load('image/rocket.png').convert_alpha()
-rocket_mini =  pygame.transform.scale(rocket_mini, (SCREEN_WIDTH//25, SCREEN_HEIGHT//15))
+hud_item = pygame.image.load('image/hud-item.png')
+hud_hp_bar = pygame.image.load('image/hud-hp-bar.png')
+hud_score = pygame.image.load('image/hud-score.png')
 boss_mini = pygame.image.load('image/ga_boss_1.png').convert_alpha()
 boss_mini =  pygame.transform.scale(boss_mini, (SCREEN_WIDTH//25, SCREEN_HEIGHT//15))
 game_over_image = pygame.image.load('image/begin2.png')
@@ -61,25 +60,31 @@ base_destroyed_image = pygame.image.load('image/vu_no_3.png')
 base_destroyed_image  = pygame.transform.scale(base_destroyed_image , (SCREEN_WIDTH//9, SCREEN_HEIGHT//9))
 winner_image =  pygame.image.load('image/winner.png')
 winner_image  = pygame.transform.scale(winner_image , (SCREEN_WIDTH//2, SCREEN_HEIGHT//2))
+back_image = pygame.image.load('image/btn-back.png')
+back_button = button.Button(32,20,back_image)
 #================================================================================
 
 def display_on_screen(base):
-    score_text = 'Score: ' + str(base.score)
-    display_text = font_regular.render(score_text, True, LIGHT_YELLOW)
-    game_screen.blit(display_text , [30,30])
+    if back_button.draw()==True:
+        pygame.quit()
+        os.system('python menu_main.py')
+        sys.exit()
+    
+    game_screen.blit(hud_score, (32, 65))
+    score_text = 'SCORE: ' + str(base.score)
+    display_text = font_small.render(score_text, True, WHITE)
+    game_screen.blit(display_text , [44,69])
 
     if base.hp < 0: base.hp=0
-    hp_left_text = font_regular.render(str(round(base.hp)*1.0) + ' %', True, LIGHT_YELLOW)
-    game_screen.blit(hp_left_text, [60,60])
-    game_screen.blit(hp_mini, [25,60])
+    hp_left_text = font_small.render(str(round(base.hp)*1.0) + '%', True, WHITE)
+    game_screen.blit(hud_hp_bar, [77,20])
+    game_screen.blit(hp_left_text, [113,29])
 
-    rk_left_text = font_regular.render(str(base.rocket), True, LIGHT_YELLOW)
-    game_screen.blit(rk_left_text, [60,100])
-    game_screen.blit(rocket_mini, [20,85])
-
-    dui_ga_text = font_regular.render(str(base.num_chicken_thighs), True, LIGHT_YELLOW)
-    game_screen.blit(dui_ga_text, [60,130])
-    game_screen.blit(dui_ga_mini, [30,130])
+    game_screen.blit(hud_item, (863, 20))
+    dui_ga_text = font_small.render(str(base.num_chicken_thighs), True, LIGHT_YELLOW)
+    game_screen.blit(dui_ga_text, [902,30])
+    rk_left_text = font_small.render(str(base.rocket), True, LIGHT_YELLOW)
+    game_screen.blit(rk_left_text, [902,60])
 
 def display_boss_hp(boss):
     pygame.draw.rect(game_screen, RED, (250,20,500*boss.hp/100,25))   # vẽ thanh máu

@@ -88,7 +88,7 @@ def display_on_screen(base):
 
 def display_boss_hp(boss):
     pygame.draw.rect(game_screen, RED, (250,20,500*boss.hp/100,25))   # vẽ thanh máu
-    pygame.draw.rect(game_screen, RED, (250,20,500,2))                                  # vẽ viền thanh máu
+    pygame.draw.rect(game_screen, RED, (250,20,500,2))             # vẽ viền thanh máu
     pygame.draw.rect(game_screen, RED, (250,20+25,500,2))
     pygame.draw.rect(game_screen, RED, (250+500-2,20,2,25))
     pygame.draw.rect(game_screen, RED, (250,20,2,25))
@@ -98,13 +98,13 @@ def display_boss_hp(boss):
 def display_game_over(base):
     if base.game_over == "checked":
         game_screen.blit(game_over_image, [220,50])
-        game_screen.blit( base_destroyed_image, [base.x_loc-10, base.y_loc-10] )
+        # game_screen.blit( base_destroyed_image, [base.x_loc-10, base.y_loc-10] )
         score_text = 'Score: ' + str(base.score)
         display_text = font_large.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [350,400])
+        game_screen.blit(display_text , [410,400])
         score_text = 'Thank You For Playing'
         display_text = font_large.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [180,480])
+        game_screen.blit(display_text , [335,480])
 
 def display_winner(base):
     if base.winner == "checked":

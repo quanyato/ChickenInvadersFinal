@@ -1,7 +1,7 @@
 import pygame
 import random
 import sys
-
+from Base_modul import *
 from Chicken_modul import chicken_thighs, chicken,chicken_missile 
 from Base_modul import Base, Base_missile,Base_defense
 from check_collision import check_base_missile_and_chicken, check_roket_and_chicken,update_chicken_hit,check_base_and_chicken_missile,check_base_and_chicken_thighs
@@ -117,15 +117,17 @@ def main():
         
         # vẽ gà + trung ga
         for i in range(len(chicken_list)):
-            chicken_list[i].draw_chicken()
-            chicken_list[i].move()
-            chicken_missile_list[i].chicken_hit(chicken_list[i])
-            chicken_missile_list[i].draw_chicken_missile()
-            chicken_missile_list[i].move()
-            chicken_list[i].use_ray()
-            chicken_list[i].chicken_defense()
-            chicken_thighs_list[i].random_chicken_thighs(chicken_list[i])
-            check_base_and_chicken_thighs(base,chicken_thighs_list[i])
+            # only draw when the game is running
+            if base.game_over == "false":
+                chicken_list[i].draw_chicken()
+                chicken_list[i].move()
+                chicken_missile_list[i].chicken_hit(chicken_list[i])
+                chicken_missile_list[i].draw_chicken_missile()
+                chicken_missile_list[i].move()
+                chicken_list[i].use_ray()
+                chicken_list[i].chicken_defense()
+                chicken_thighs_list[i].random_chicken_thighs(chicken_list[i])
+                check_base_and_chicken_thighs(base,chicken_thighs_list[i])
         
         # check event
         for i in chicken_list:

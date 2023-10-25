@@ -181,7 +181,7 @@ def main():
             # set up nut space
             if key_pressed[pygame.K_SPACE]  and base_missile.missile_firing  is False  and base.game_over == "false":
                 base_missile.missile_firing = True
-                base_missile.x_loc = base.x_loc + 10
+                base_missile.x_loc = base.x_loc
                 base_missile.y_loc = base.y_loc - Base_modul.base_missile_height
                 spaceship_hit_sound.play()
             # # set up nut R

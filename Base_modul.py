@@ -72,13 +72,10 @@ class Base:
             boss.hp = 0
             boss.statu = 'disappear'
             winner_sound.play()
-        if self.winner == "true": self.winner = "checked"
-        
-
-    
+        if self.winner == "true": self.winner = "checked"    
 
 #============================================================================
-class Base_missile (Base):
+class Base_missile ():
     x_loc = 0
     y_loc = 0
     missile_firing = False

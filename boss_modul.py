@@ -5,11 +5,9 @@ SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 614
 game_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-defense_image =  pygame.image.load('image/ray.png').convert_alpha()
-defense_image = pygame.transform.scale(defense_image, (SCREEN_WIDTH//6, SCREEN_HEIGHT//6))
-boss_image = pygame.transform.scale(pygame.image.load('image/ga_boss.png'), (SCREEN_WIDTH//3, SCREEN_HEIGHT//3))
+defense_image =  pygame.image.load('image/sheld-large.png')
+boss_image = pygame.image.load('image/boss-ufo.png')
 boss_died_image = pygame.transform.scale(pygame.image.load('image/vu_no_3.png'), (SCREEN_WIDTH//3, SCREEN_HEIGHT//3))
-boss_defense_image = pygame.transform.scale(defense_image, (SCREEN_WIDTH//2, SCREEN_HEIGHT//2)) 
 boss_width = boss_image.get_rect().width
 boss_height = boss_image.get_rect().height
 boss_missile_image = pygame.transform.scale(pygame.image.load('image/trung_ga.png'), (SCREEN_WIDTH // 15, SCREEN_HEIGHT//9))
@@ -107,7 +105,9 @@ class Boss:
             self.time_defense = 400
             self.hp -= 1
         if self.time_defense > 0:
-            game_screen.blit(boss_defense_image, [self.x_loc -160, self.y_loc -100 ])
+            sheld_x = self.x_loc - defense_image.get_width()//2+boss_width//2
+            sheld_y = self.y_loc - defense_image.get_height()//2+boss_height//2
+            game_screen.blit(defense_image, [sheld_x, sheld_y ])
         if self.time_defense == 0 and self.hit is False:
             if random.randint(0, 2000) == 1:
                 self.time_defense = random.randint(200, 400)

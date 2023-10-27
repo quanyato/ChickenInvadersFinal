@@ -92,7 +92,7 @@ def display_boss_hp(boss):
     pygame.draw.rect(game_screen, RED, (250,20+25,500,2))
     pygame.draw.rect(game_screen, RED, (250+500-2,20,2,25))
     pygame.draw.rect(game_screen, RED, (250,20,2,25))
-    game_screen.blit(boss_mini, [200, 10])
+    #game_screen.blit(boss_mini, [200, 10])
     game_screen.blit(font_regular.render(str(round(boss.hp*10)/10.0) + " % HP", True, LIGHT_YELLOW), [250 +200, 20])
 
 def display_game_over(base):

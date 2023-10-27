@@ -111,7 +111,7 @@ def display_winner(base):
         game_screen.blit(winner_image, [220,70])
         score_text = 'Score: ' + str(base.score)
         display_text = font_large.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [400,400])
+        game_screen.blit(display_text , [410,400])
         score_text = 'Thank You For Playing'
         display_text = font_large.render(score_text, True, LIGHT_YELLOW)
-        game_screen.blit(display_text , [250,480])
+        game_screen.blit(display_text , [335,480])
